@@ -10,14 +10,18 @@ from .simulation import TrafficSimulation
 SEEDS = list(range(1, cfg.N_SEEDS + 1))
 
 
-def evaluate(params, seeds=None, return_metrics=False):
+def evaluate(params, seeds=None, return_metrics=False, num_seeds=-1):
     seeds = seeds if seeds is not None else SEEDS
     controller = FuzzyController(params)
 
+    if num_seeds == -1:
+        num_seeds = len(seeds)
+    num_seeds = min(num_seeds, len(seeds))
+
     costs, Ws, Qs, Ss = [], [], [], []
-    for seed in seeds:
+    for seed in range(num_seeds):
         sim = TrafficSimulation(controller, cfg.ARRIVAL_RATE_1, cfg.ARRIVAL_RATE_2,
-                                 n_cycles=cfg.N_CYCLES, seed=seed)
+                                n_cycles=cfg.N_CYCLES, seed=seeds[seed])
         res = sim.run()
         c = cfg.ALPHA * res["W"] + cfg.BETA * res["Q"] + cfg.GAMMA * res["S"]
         costs.append(c)
@@ -27,14 +31,16 @@ def evaluate(params, seeds=None, return_metrics=False):
 
     mean_cost = float(np.mean(costs))
     if return_metrics:
-        metrics = {"W": float(np.mean(Ws)), "Q": float(np.mean(Qs)), "S": float(np.mean(Ss))}
+        metrics = {"W": float(np.mean(Ws)), "Q": float(
+            np.mean(Qs)), "S": float(np.mean(Ss))}
         return mean_cost, metrics
     return mean_cost
 
 
 def get_bounds():
     """Lower/upper bounds for the 18-dim fuzzy parameter vector."""
-    lo = np.array([0, 0, 0, 0, 0, 0, cfg.GREEN_MIN, cfg.GREEN_MIN, cfg.GREEN_MIN] + [0.0] * 9)
+    lo = np.array([0, 0, 0, 0, 0, 0, cfg.GREEN_MIN,
+                  cfg.GREEN_MIN, cfg.GREEN_MIN] + [0.0] * 9)
     hi = np.array([cfg.QUEUE_MAX] * 6 + [cfg.GREEN_MAX] * 3 + [1.0] * 9)
     return lo, hi
 

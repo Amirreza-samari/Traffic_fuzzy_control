@@ -14,4 +14,4 @@ report/
 CI_Project.pdf
 
 #test_ipynb
-src/*test.ipynb
+test
