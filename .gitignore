@@ -9,3 +9,9 @@ results/plots/
 
 # Private report folder
 report/
+
+# Doc
+CI_Project.pdf
+
+#test_ipynb
+test

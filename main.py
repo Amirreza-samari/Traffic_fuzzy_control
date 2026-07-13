@@ -1,14 +1,14 @@
 """End-to-end pipeline: baseline -> PSO -> ACO -> comparison.
 Run with: python main.py
 """
+import run_baseline
 import os
 import sys
+import run_pso
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-import run_baseline
 # will be added :
-# import run_pso
 # import run_aco
 # import run_comparison
 
@@ -19,10 +19,10 @@ def main():
     print("=" * 60)
     run_baseline.main()
 
-    # print("=" * 60)
-    # print("STEP 2/4: PSO optimization")
-    # print("=" * 60)
-    # run_pso.main()
+    print("=" * 60)
+    print("STEP 2/4: PSO optimization")
+    print("=" * 60)
+    run_pso.main()
 
     # print("=" * 60)
     # print("STEP 3/4: ACO optimization")
