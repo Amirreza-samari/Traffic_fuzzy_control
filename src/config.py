@@ -10,20 +10,19 @@ GREEN_MAX = 55          # maximum green time (seconds)
 SERVICE_RATE = 0.5      # vehicles discharged per second during green
 
 # --- Traffic arrival rates (vehicles / second) ---
-ARRIVAL_RATE_1 = 0.25
-ARRIVAL_RATE_2 = 0.20
+ARRIVAL_RATE_1 = 0.36
+ARRIVAL_RATE_2 = 0.10
 
 # --- Simulation episode length ---
 N_CYCLES = 30           # signal cycles per simulation episode
 N_SEEDS = 4             # random seeds averaged per fitness evaluation
 
 # --- Cost function weights: C = ALPHA*W + BETA*Q + GAMMA*S ---
-ALPHA = 1.0
+ALPHA = 0.8
 BETA = 1.0
-GAMMA = 0.05
+GAMMA = 0.02
 
 RANDOM_SEED = 97
-
 
 # ========== PSO Hyperparameters ==========
 PSO_N_PARTICLES = 1000

@@ -19,20 +19,20 @@ def main():
     print("=" * 60)
     run_baseline.main()
 
-    # print("=" * 60)
-    # print("STEP 2/4: PSO optimization")
-    # print("=" * 60)
-    # run_pso.main()
+    print("=" * 60)
+    print("STEP 2/4: PSO optimization")
+    print("=" * 60)
+    run_pso.main()
 
     print("=" * 60)
     print("STEP 3/4: ACO optimization")
     print("=" * 60)
     run_aco.main()
 
-    # print("=" * 60)
-    # print("STEP 4/4: Comparison")
-    # print("=" * 60)
-    # run_comparison.main()
+    print("=" * 60)
+    print("STEP 4/4: Comparison")
+    print("=" * 60)
+    run_comparison.main()
 
     # print("=" * 60)
     # print("Done. See results/plots and results/data")
