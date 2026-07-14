@@ -1,6 +1,9 @@
 """Global configuration constants for the traffic simulation,
 fuzzy controller and optimization algorithms."""
 
+
+
+
 # --- Fuzzy domain limits ---
 # max queue length used in fuzzy input domain (vehicles)
 QUEUE_MAX = 20
@@ -10,20 +13,19 @@ GREEN_MAX = 55          # maximum green time (seconds)
 SERVICE_RATE = 0.5      # vehicles discharged per second during green
 
 # --- Traffic arrival rates (vehicles / second) ---
-ARRIVAL_RATE_1 = 0.25
-ARRIVAL_RATE_2 = 0.20
+ARRIVAL_RATE_1 = 0.36
+ARRIVAL_RATE_2 = 0.10
 
 # --- Simulation episode length ---
 N_CYCLES = 30           # signal cycles per simulation episode
 N_SEEDS = 4             # random seeds averaged per fitness evaluation
 
 # --- Cost function weights: C = ALPHA*W + BETA*Q + GAMMA*S ---
-ALPHA = 1.0
+ALPHA = 0.8
 BETA = 1.0
-GAMMA = 0.05
+GAMMA = 0.02
 
 RANDOM_SEED = 97
-
 
 # ========== PSO Hyperparameters ==========
 PSO_N_PARTICLES = 1000
@@ -66,12 +68,12 @@ PSO_TOL_RELATIVE = 1e-4                # relative to previous personal best cost
 
 # ========== Parallel ==========
 # number of processes (set to None for auto)
-PSO_N_WORKERS = 8
+PSO_N_WORKERS = 12
 
 
 # --- ACO hyperparameters (discretized continuous ACO) ---
 ACO_N_ANTS = 500
-ACO_ITERATIONS = 100
+ACO_ITERATIONS = 50
 ACO_N_LEVELS = 10
 ACO_RHO = 0.3
 ACO_Q = 1.0
@@ -125,7 +127,7 @@ ACO_ELITE_BONUS_MULTIPLIER = 0.5
 
 # Core algorithm parameters
 ACOR_N_ANTS = 100
-ACOR_ITERATIONS = 200
+ACOR_ITERATIONS = 50
 ACOR_ARCHIVE_SIZE = 30
 # concentration (lower = more focused on top solutions)
 ACOR_Q_INTENSITY = 0.5
@@ -146,7 +148,7 @@ ACOR_KEEP_BEST_RATIO = 0.5      # fraction of best solutions to keep when resett
 ACOR_MIN_SIGMA_FRACTION = 0.01
 
 # Process pool settings
-ACOR_MAX_WORKERS = 8            # number of parallel evaluation workers
+ACOR_MAX_WORKERS = 8          # number of parallel evaluation workers
 
 # Initialisation method: 'uniform' or 'latin_hypercube'
 ACOR_INIT_METHOD = 'latin_hypercube'

@@ -18,7 +18,8 @@ def _evaluate_wrapper(args):
 
 class PSO:
     def __init__(self, n_particles=cfg.PSO_N_PARTICLES, n_iter=cfg.PSO_ITERATIONS,
-                 seed=cfg.RANDOM_SEED, n_workers=cfg.PSO_N_WORKERS):
+                 seed=cfg.RANDOM_SEED, n_workers=cfg.PSO_N_WORKERS, debug_mode=False):
+        self.debug_mode = debug_mode
         self.n_particles = n_particles
         self.n_iter = n_iter
         self.rng = np.random.default_rng(seed)
@@ -34,6 +35,10 @@ class PSO:
             self.n_workers = os.cpu_count() or 1
         else:
             self.n_workers = n_workers
+
+        if self.debug_mode:
+            self.n_particles //= 10
+            self.n_iter //= 10
 
     # ---------- Core helpers ----------
     def _initialize_population(self):
@@ -166,8 +171,9 @@ class PSO:
 
                 X = self._repair_population(X)
 
-                seeds = cfg.PSO_SEEDS_EARLY if it < int(
-                    self.n_iter*cfg.PSO_SEEDS_END_MUL_TERM) else cfg.PSO_SEEDS_LATE
+                # seeds = cfg.PSO_SEEDS_EARLY if it < int(
+                #     self.n_iter*cfg.PSO_SEEDS_END_MUL_TERM) else cfg.PSO_SEEDS_LATE
+                seeds = cfg.PSO_SEEDS_LATE
                 costs = self._evaluate_population(executor, X, seeds)
 
                 prev_pbest_cost = pbest_cost.copy()

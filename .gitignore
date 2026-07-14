@@ -2,6 +2,10 @@
 __pycache__/
 *.pyc
 *.pyo
+.venv
+tempCodeRunnerFile.py
+src/tempCodeRunnerFile.py
+
 
 # Output results and generated plots
 results/data/
@@ -11,7 +15,7 @@ results/plots/
 report/
 
 # Doc
-CI_Project.pdf
+# CI_Project.pdf
 
 #test_ipynb
 test
