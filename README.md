@@ -33,20 +33,30 @@ traffic_fuzzy_control/
 
 ## How to Run
 
-### 1. Install Dependencies
+### 1. Create and Activate Virtual Environment
 
 ```bash
-pip install -r requirements.txt
+python -m venv .venv
+cd .venv/Scripts
+activate.bat
+```
+
+---
+
+### 2. Install Dependencies
+
+```bash
+pip install -r ../../requirements.txt
 ```
 
 Only `numpy` and `matplotlib` are required.
 
 ---
 
-### 2. Full Project Execution (Simplest Method)
+### 3. Full Project Execution (Simplest Method)
 
 ```bash
-python main.py
+python ../../main.py
 ```
 
 This command sequentially runs the baseline controller, executes PSO and then ACO on the fuzzy parameters, and finally generates the comparison plots and the final table.
@@ -57,7 +67,7 @@ The total execution time with default settings is approximately **30 seconds**.
 
 ---
 
-### 3. Step-by-Step Execution (Optional)
+### 4. Step-by-Step Execution (Optional)
 
 ```bash
 python run_baseline.py     # Only baseline

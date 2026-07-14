@@ -57,7 +57,7 @@ def plot_queue_trace(q1_hist, q2_hist, title, out_path):
 
 def plot_stability_box(data_dict, ylabel, title, out_path):
     plt.figure(figsize=(6, 4.5))
-    plt.boxplot(list(data_dict.values()), labels=list(data_dict.keys()))
+    plt.boxplot(list(data_dict.values()), tick_labels=list(data_dict.keys()))
     plt.ylabel(ylabel)
     plt.title(title)
     plt.grid(axis="y", alpha=0.3)

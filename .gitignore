@@ -2,8 +2,10 @@
 __pycache__/
 *.pyc
 *.pyo
+.venv
 tempCodeRunnerFile.py
 src/tempCodeRunnerFile.py
+
 
 # Output results and generated plots
 results/data/
