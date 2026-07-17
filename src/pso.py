@@ -74,10 +74,6 @@ class PSO:
         V = np.clip(V, -self.v_max, self.v_max)
         X = X + V
 
-        # Elitism: freeze the global best
-        X[self.gbest_idx] = gbest.copy()
-        V[self.gbest_idx] = np.zeros(self.dim)
-
         return X, V
 
     def _apply_mutation_and_reset(self, X, V, pbest_cost, prev_pbest_cost, gbest):
